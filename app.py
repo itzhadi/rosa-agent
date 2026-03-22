@@ -107,10 +107,12 @@ st.set_page_config(
     page_title="Neurogenic Rosacea Agent",
     page_icon="🔬",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
 # ── Custom CSS ───────────────────────────────────────────────
+st.markdown('<meta name="viewport" content="width=device-width, initial-scale=1.0">', unsafe_allow_html=True)
+
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
@@ -261,6 +263,86 @@ st.markdown("""
 
     div[data-testid="stSidebar"] {
         background: linear-gradient(180deg, #fafbfc 0%, #f0f2f5 100%);
+    }
+
+    /* ── Mobile responsive ─────────────────────────── */
+    @media (max-width: 768px) {
+        .main-header {
+            padding: 1.2rem 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        .main-header h1 {
+            font-size: 1.3rem;
+        }
+        .main-header p {
+            font-size: 0.85rem;
+        }
+
+        .stat-card {
+            padding: 0.8rem 0.5rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+        .stat-number {
+            font-size: 1.5rem;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+        }
+
+        .digest-card {
+            padding: 1rem;
+            border-radius: 8px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .digest-card h1 { font-size: 1.3rem; }
+        .digest-card h2 { font-size: 1.1rem; }
+        .digest-card h3 { font-size: 1rem; }
+        .digest-card li, .digest-card p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .item-card {
+            padding: 0.8rem;
+            border-radius: 6px 0 0 6px;
+        }
+        .item-card h4 { font-size: 0.9rem; }
+        .item-card .meta { font-size: 0.75rem; }
+
+        .stMainBlockContainer, .block-container {
+            padding-left: 0.5rem !important;
+            padding-right: 0.5rem !important;
+        }
+
+        div[data-testid="stTabs"] button {
+            font-size: 0.85rem !important;
+            padding: 0.4rem 0.6rem !important;
+        }
+
+        div[data-testid="stColumns"] {
+            gap: 0.3rem !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .main-header h1 {
+            font-size: 1.1rem;
+        }
+        .stat-number {
+            font-size: 1.2rem;
+        }
+        .stat-label {
+            font-size: 0.7rem;
+        }
+        .digest-card {
+            padding: 0.75rem;
+        }
+        .digest-card h1 { font-size: 1.1rem; }
+        .digest-card h2 { font-size: 1rem; }
+        .digest-card h3 { font-size: 0.9rem; }
     }
 </style>
 """, unsafe_allow_html=True)
