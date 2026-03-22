@@ -11,6 +11,14 @@ from dotenv import load_dotenv
 
 load_dotenv(Path(__file__).resolve().parent / ".env")
 
+# On Streamlit Cloud, secrets come from st.secrets instead of .env
+try:
+    for key, value in st.secrets.items():
+        if key not in os.environ:
+            os.environ[key] = str(value)
+except Exception:
+    pass
+
 DIGESTS_DIR = Path(__file__).resolve().parent / "rosacea_digests"
 
 
