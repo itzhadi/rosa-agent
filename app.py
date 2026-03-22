@@ -267,6 +267,21 @@ st.markdown("""
 
     /* ── Mobile responsive ─────────────────────────── */
     @media (max-width: 768px) {
+        .stApp {
+            overflow-x: hidden !important;
+        }
+
+        .stMainBlockContainer, .block-container {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            max-width: 100% !important;
+        }
+
+        /* Sidebar: overlay on mobile, don't push content */
+        div[data-testid="stSidebar"] {
+            z-index: 999 !important;
+        }
+
         .main-header {
             padding: 1.2rem 1rem;
             border-radius: 10px;
@@ -274,37 +289,49 @@ st.markdown("""
         }
         .main-header h1 {
             font-size: 1.3rem;
+            line-height: 1.4;
         }
         .main-header p {
             font-size: 0.85rem;
         }
 
+        /* Stat cards: stack vertically on mobile */
+        div[data-testid="stColumns"] {
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+        }
+        div[data-testid="stColumns"] > div[data-testid="stColumn"] {
+            width: 100% !important;
+            flex: 1 1 100% !important;
+        }
         .stat-card {
-            padding: 0.8rem 0.5rem;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 0;
         }
         .stat-number {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
         }
         .stat-label {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
         }
 
+        /* Digest content */
         .digest-card {
             padding: 1rem;
             border-radius: 8px;
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
-        .digest-card h1 { font-size: 1.3rem; }
-        .digest-card h2 { font-size: 1.1rem; }
-        .digest-card h3 { font-size: 1rem; }
+        .digest-card h1 { font-size: 1.2rem; }
+        .digest-card h2 { font-size: 1.05rem; }
+        .digest-card h3 { font-size: 0.95rem; }
         .digest-card li, .digest-card p {
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.88rem;
+            line-height: 1.7;
         }
 
+        /* Item cards */
         .item-card {
             padding: 0.8rem;
             border-radius: 6px 0 0 6px;
@@ -312,37 +339,36 @@ st.markdown("""
         .item-card h4 { font-size: 0.9rem; }
         .item-card .meta { font-size: 0.75rem; }
 
+        /* Tabs */
+        div[data-testid="stTabs"] button {
+            font-size: 0.8rem !important;
+            padding: 0.4rem 0.5rem !important;
+        }
+        div[data-testid="stTabs"] > div[role="tablist"] {
+            gap: 0 !important;
+        }
+
+        /* History: stack columns */
+        .stDownloadButton button {
+            font-size: 0.8rem !important;
+            padding: 0.3rem 0.6rem !important;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .main-header {
+            padding: 1rem 0.8rem;
+        }
+        .main-header h1 {
+            font-size: 1.1rem;
+        }
+        .main-header p {
+            font-size: 0.8rem;
+        }
         .stMainBlockContainer, .block-container {
             padding-left: 0.5rem !important;
             padding-right: 0.5rem !important;
         }
-
-        div[data-testid="stTabs"] button {
-            font-size: 0.85rem !important;
-            padding: 0.4rem 0.6rem !important;
-        }
-
-        div[data-testid="stColumns"] {
-            gap: 0.3rem !important;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .main-header h1 {
-            font-size: 1.1rem;
-        }
-        .stat-number {
-            font-size: 1.2rem;
-        }
-        .stat-label {
-            font-size: 0.7rem;
-        }
-        .digest-card {
-            padding: 0.75rem;
-        }
-        .digest-card h1 { font-size: 1.1rem; }
-        .digest-card h2 { font-size: 1rem; }
-        .digest-card h3 { font-size: 0.9rem; }
     }
 </style>
 """, unsafe_allow_html=True)
